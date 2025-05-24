@@ -13,12 +13,17 @@ export default async function HomePage() {
   })
 
   // 3️⃣ fetch session
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
+ const {
+  data: { user },
+  error,
+} = await supabase.auth.getUser()
 
-  if (session) {
+  if (user) {
     redirect('/dashboard')
+  }
+
+  if (error) {
+    console.log(error)
   }
 
   return (
