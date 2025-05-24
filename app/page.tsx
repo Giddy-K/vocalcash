@@ -4,26 +4,26 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export default async function HomePage() {
-  // 👇 1️⃣  await cookies()  — this satisfies Next’s dynamic-API rule
+  // 1️⃣ cookies() is synchronous – no await
   const cookieStore = await cookies()
 
-  // 👇 2️⃣ pass a function that returns that same store
   const supabase = createServerComponentClient({
     cookies: () => cookieStore,
   })
 
-  // 3️⃣ fetch session
- const {
-  data: { user },
-  error,
-} = await supabase.auth.getUser()
+  // 2️⃣ get the user; if there’s no valid session, user === null and/or error.code === 'auth-session-missing'
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
 
   if (user) {
     redirect('/dashboard')
   }
 
-  if (error) {
-    console.log(error)
+  // optional: log only unexpected errors
+  if (error && error.status !== 400) {
+    console.error(error)
   }
 
   return (
