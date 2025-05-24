@@ -6,12 +6,19 @@ import Link from 'next/link'
 
 export default async function DashboardPage() {
   const supabase = createServerComponentClient({ cookies })
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
 
-  if (!session) {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
+
+  if (!user) {
     redirect('/login')
+  }
+
+    if (error) {
+    console.log(error.message);
+    
   }
 
   return (
@@ -27,14 +34,14 @@ export default async function DashboardPage() {
 
       <p className="text-lg mt-2">
         Welcome,&nbsp;
-        <span className="font-semibold">{session.user.email}</span>!
+        <span className="font-semibold">{user.email}</span>!
       </p>
 
       <div className="mt-6 space-y-4">
         <Link href="/transactions/new" className="block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
           ➕ Add Transaction
         </Link>
-        <Link href="/dashboard" className="block bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition">
+        <Link href="/transactions" className="block bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition">
           📊 View Summary
         </Link>
       </div>
