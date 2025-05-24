@@ -2,32 +2,42 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
 export default async function DashboardPage() {
-  // 1️⃣ Create a server-side Supabase client bound to the cookies for this request
   const supabase = createServerComponentClient({ cookies })
-
-  // 2️⃣ Fetch the current session
   const {
     data: { session },
   } = await supabase.auth.getSession()
 
-  // 3️⃣ If no session, send the browser to /login
   if (!session) {
     redirect('/login')
   }
 
-  // 4️⃣ Otherwise render the dashboard
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+    <main className="p-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <form action="/logout" method="post">
+          <button type="submit" className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 transition">
+            🚪 Logout
+          </button>
+        </form>
+      </div>
 
-      <p className="text-lg">
-        Welcome to your dashboard,&nbsp;
+      <p className="text-lg mt-2">
+        Welcome,&nbsp;
         <span className="font-semibold">{session.user.email}</span>!
       </p>
 
-      {/* 👉 Add charts, recent transactions, etc. here */}
+      <div className="mt-6 space-y-4">
+        <Link href="/transactions/new" className="block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
+          ➕ Add Transaction
+        </Link>
+        <Link href="/dashboard" className="block bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition">
+          📊 View Summary
+        </Link>
+      </div>
     </main>
   )
 }
