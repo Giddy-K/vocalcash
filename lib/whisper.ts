@@ -1,5 +1,4 @@
 // lib/whisper.ts
-
 export type ParsedTransaction = {
   type: 'income' | 'expense'
   amount: number
@@ -7,9 +6,9 @@ export type ParsedTransaction = {
   note?: string
 }
 
-// 👇 You can use Claude, GPT-4 or another LLM
-export async function parseTransactionFromText(transcript: string): Promise<ParsedTransaction> {
-  // Example Claude-compatible prompt (you'll route this through your API call)
+export async function parseTransactionFromText(
+  transcript: string
+): Promise<ParsedTransaction> {
   const prompt = `
 You are an assistant that extracts structured financial data from natural language.
 
@@ -28,8 +27,16 @@ Only return valid JSON.
   const response = await fetch('/api/parse', {
     method: 'POST',
     body: JSON.stringify({ prompt }),
+    headers: { 'Content-Type': 'application/json' },
   })
 
   const json = await response.json()
+  console.log('🔍 Parsed response:', json)
+
+  if (!json || !json.type || !json.amount || !json.category) {
+    throw new Error('Invalid response format from LLM')
+  }
+
+  // ✅ Return ensures every code path returns a ParsedTransaction
   return json as ParsedTransaction
 }
