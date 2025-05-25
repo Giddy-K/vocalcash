@@ -4,6 +4,8 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import TransactionList from '@/components/TransactionList'
 import SummaryChart from '@/components/SummaryChart'
+import IncomeExpensePie from '@/components/IncomeExpensePie'
+import MonthlyTrendChart from '@/components/MonthlyTrendChart'
 import { Transaction } from '@/types/transaction'
 import Link from 'next/link'
 
@@ -47,6 +49,8 @@ export default async function TransactionsPage() {
       </header>
 
       <SummaryChart data={txs} />
+
+<MonthlyTrendChart data={txs} />
 
       <TransactionList data={txs} />
     </main>
