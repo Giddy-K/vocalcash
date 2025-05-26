@@ -79,16 +79,16 @@ Here's what's coming next:
 ## Screenshots
 
 1. **HomePage**
-![Homepage](homepage.png)
+![Homepage](assets/screenshots/homepage.png)
 
 2. **Dashboard**
-![Dashboard](dashboard.png)
+![Dashboard](assets/screenshots/dashboard.png)
 
 3. **Transactions Overview**
-![Transactions Overview](transactions.png)
+![Transactions Overview](assets/screenshots/transactions.png)
 
 4. **Adding Transactions**
-![Adding Transactions](adding_transaction.png)
+![Adding Transactions](assets/screenshots/adding_transaction.png)
 
 ## Contributing
 
