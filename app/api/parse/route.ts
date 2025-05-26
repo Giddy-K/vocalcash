@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
     const completion = await openai.chat.completions.create({
       model: 'llama3-70b-8192',
-      response_format: { type: 'json_object' },  // 🟢 ask for pure JSON
+      response_format: { type: 'json_object' },  // asking for pure JSON
       messages: [
         {
           role: 'system',
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     const raw = completion.choices[0].message.content?.trim() || '{}'
 
-    // 👉 Fallback in case the model still adds text
+    // Fallback in case the model still adds text
     const jsonStr = raw.startsWith('{')
       ? raw
       : raw.match(/\{[\s\S]*?\}/)?.[0] ?? '{}'
