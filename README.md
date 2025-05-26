@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VocalCash
 
-## Getting Started
+**VocalCash** is a smart, voice-assisted expense tracker designed to help you take control of your finances quickly and naturally. Powered by speech recognition, it allows users to add transactions and view visual summaries of their income and spending—without ever typing a word.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- **Voice Input** – Add expenses and income using voice commands
+- **Real-time Charts** – Visualize your financial activity with pie and bar charts
+- **Secure Authentication** – Sign up or log in with Supabase Auth
+- **User Dashboard** – Personalized financial dashboard with a welcome message
+- **Add Transactions** – Simple interface to record new transactions
+- **Track Spending** – Instantly see your expenses vs. income breakdown
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 13+ App Router](https://nextjs.org/)
+- **Auth:** [Supabase](https://supabase.io/)
+- **Database:** Supabase PostgreSQL
+- **Charts:** Recharts
+- **Voice Recognition:** Web Speech API
+- **Deployment:** Vercel
+
+---
+
+## ⚙️ Getting Started
+
+### 1. **Clone the Repository**
+
+```bash
+git clone https://github.com/yourusername/vocalcash.git
+cd vocalcash
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a .env.local file in the root and add your Supabase credentials:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+GROQ_API_KEY=your_groq_api_key
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing the App
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⚠️ IMPORTANT: Please test the app on Google Chrome only for now.
+Firefox does not fully support the Web Speech API, which is required for the voice command feature to work.
 
-## Learn More
+## Roadmap / Planned Improvements
 
-To learn more about Next.js, take a look at the following resources:
+Here's what's coming next:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Improved voice command feedback (e.g., show transcript live)
+- Categorize transactions (e.g., Food, Transport, etc.)
+- Make the app fully responsive on mobile
+- Add daily/weekly spending notifications
+- Support multiple languages for voice input
+- Export transaction history as PDF or CSV
+- Multi-user role support (admin, standard user)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
+Coming soon...
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE)
+
+## 💬 Feedback
+
+Have suggestions or found bugs? Open an issue or reach out on GitHub Issues.
