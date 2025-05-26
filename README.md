@@ -61,8 +61,8 @@ The app will be available at <http://localhost:3000>.
 
 ## Testing the App
 
-⚠️ IMPORTANT: Please test the app on Google Chrome only for now.
-Firefox does not fully support the Web Speech API, which is required for the voice command feature to work.
+⚠️ **IMPORTANT**: **Please test the app on Google Chrome only for now.
+Firefox does not fully support the Web Speech API, which is required for the voice command feature to work.**
 
 ## Roadmap / Planned Improvements
 
