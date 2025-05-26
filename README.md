@@ -78,7 +78,17 @@ Here's what's coming next:
 
 ## Screenshots
 
-Coming soon...
+1. **HomePage**
+![Homepage](assets/screenshots/homepage.png)
+
+2. **Dashboard**
+![Dashboard](assets/screenshots/dashboard.png)
+
+3. **Transactions Overview**
+![Transactions Overview](assets/screenshots/transactions.png)
+
+4. **Adding Transactions**
+![Adding Transactions](assets/screenshots/adding_transaction.png)
 
 ## Contributing
 
